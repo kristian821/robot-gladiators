@@ -13,24 +13,32 @@ var fight = function() {
     // Alert players that they are starting the round
   window.alert("Welcome to Robot Gladiators!");
 
-    enemyHealth = enemyHealth - playerAttack;
+  var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose.");
+    if (promptFight === "fight" || promptFight === "FIGHT") {
 
-    console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+        enemyHealth = enemyHealth - playerAttack;
 
-    if (enemyHealth <= 0) {
-        window.alert(enemyName + " has died!");
+        console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+
+        if (enemyHealth <= 0) {
+            window.alert(enemyName + " has died!");
+        } else {
+            window.alert(enemyName + " still has " + enemyHealth + " health left.")
+        }
+    
+        playerHealth = playerHealth - enemyAttack;
+    
+        console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+
+        if (playerHealth <= 0) {
+            window.ReadableStreamBYOBReader(playerName + " has died!");
+        } else {
+            window.alert(playerName + " still has " + playerHealth + " health left.");
+        }
+    } else if (promptFight === skip || promptFight === SKIP) {
+        window.alert(playerName + " has chosen to skip the fight!");
     } else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.")
-    }
-  
-    playerHealth = playerHealth - enemyAttack;
-  
-    console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
-
-    if (playerHealth <= 0) {
-        window.ReadableStreamBYOBReader(playerName + " has died!");
-    } else {
-        window.alert(playerName + " still has " + playerHealth + " health left.");
+        window.alert("You need to choose a valid option.Try Again!");
     }
 };
 
