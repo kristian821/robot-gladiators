@@ -31,11 +31,12 @@ var fight = function() {
         console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
 
         if (playerHealth <= 0) {
-            window.ReadableStreamBYOBReader(playerName + " has died!");
+            window.alert(playerName + " has died!");
         } else {
             window.alert(playerName + " still has " + playerHealth + " health left.");
         }
-    } else if (promptFight === skip || promptFight === SKIP) {
+    } 
+    else if (promptFight === "skip" || promptFight === "SKIP") {
         window.alert(playerName + " has chosen to skip the fight!");
     } else {
         window.alert("You need to choose a valid option.Try Again!");
