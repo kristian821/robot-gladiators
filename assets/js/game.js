@@ -80,6 +80,10 @@ var startGame = function() {
             enemyHealth = 50;
 
             fight(pickedEnemyName);
+
+            if(playerHealth > 0 && i < enemyNames.length - 1) {
+                shop();
+            }
         } else {
             window.alert("You have lost you robot in battle! Game Over!")
             break;
@@ -103,6 +107,55 @@ var endGame = function() {
     } else {
         window.alert("Thank you for playing Robot-Gladiators! Come Back Soon!");
     }
+};
+
+var shop = function() {
+    var storeConfirm = window.prompt("The fight is over, visit the shop before the next round?");
+
+    if (storeConfirm) {
+        console.log("entered the shop");
+        var shopOptionPrompt = window.prompt(
+            "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+            );
+
+        switch(shopOptionPrompt) {
+            case "REFILL":
+            case "refill":
+                if (playerMoney >= 7) {
+                    window.alert("Refilling player's health by 20 for 7 dollars.");
+
+                    playerHealth = playerHealth + 20;
+                    playerMoney = playerMoney - 7;
+                } else {
+                    window.alert("You don't have enough moeny!");
+                }
+
+                break;
+            case "UPGRADE":
+            case "upgrade":
+                if (playerMoney >= 7) {
+                    window.alert("Upgrading player's attack by 6 for 7 dollars.");
+
+                    playerAttack = playerAttack + 6;
+                    playerMoney = playerMoney - 7;
+                } else {
+                    window.alert("You don't have enough money!");
+                }
+
+                break;
+
+            case "LEAVE":
+            case "leave":
+                window.alert("Leaving the store.");
+
+                break;
+            default:
+                window.alert("You did not pick a valid option. Try again.");
+
+                shop();
+                break;
+        }
+    };
 };
 
 startGame();
